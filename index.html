@@ -12,16 +12,34 @@
             let computerChoice = Math.floor(Math.random() * 3);
 
             if (computerChoice == 0) {
-                return "Rock";
+                return "ROCK";
             } else if (computerChoice == 1) {
-                return "Paper";
+                return "PAPER";
             } else if (computerChoice == 2) {
-                return "Scissors";
+                return "SCISSORS";
             } else  {
                 return "Something went wrong";
             }
         }
-        console.log(getComputerChoice());
+
+        function getPlayerChoice(){
+            let playerChoice = prompt("Make a choice (Rock, Paper, Scissors)");
+            return playerChoice.toUpperCase();
+        }
+
+        /*
+        player gets a prompt
+        player enters an input
+        input is case insensitive
+        input is saved to a variable
+        variable is compared computer choice
+            draw
+            rock beats scissors
+            scissors beats paper
+            paper beats rock
+                if computer picks rock and player pick paper - player wins
+        a result message is displayed
+        */
     </script>
 </body>
 </html>
