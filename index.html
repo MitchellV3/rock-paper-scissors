@@ -27,6 +27,30 @@
             return playerChoice.toUpperCase();
         }
 
+        function playRound(computerChoice, playerChoice){
+            console.log(computerChoice);
+            console.log(playerChoice);
+
+            if (computerChoice == playerChoice) {
+                return "Draw!";
+            } else if (computerChoice == "ROCK" && playerChoice == "SCISSORS"){
+                return "You lose!";
+            } else if (computerChoice == "SCISSORS" && playerChoice == "PAPER"){
+                return "You lose!";
+            } else if (computerChoice == "PAPER" && playerChoice == "ROCK"){
+                return "You lose!";
+            } else if (playerChoice == "ROCK" && computerChoice == "SCISSORS"){
+                return "You win!";
+            } else if (playerChoice == "SCISSORS" && computerChoice == "PAPER"){
+                return "You win!";
+            } else if (playerChoice == "PAPER" && computerChoice == "ROCK"){
+                return "You win!";
+            } else {
+                return "Invalid input";
+            }
+        }
+
+        console.log(playRound(getComputerChoice(), getPlayerChoice()));
         /*
         player gets a prompt
         player enters an input
