@@ -50,20 +50,39 @@
             }
         }
 
-        console.log(playRound(getComputerChoice(), getPlayerChoice()));
-        /*
-        player gets a prompt
-        player enters an input
-        input is case insensitive
-        input is saved to a variable
-        variable is compared computer choice
-            draw
-            rock beats scissors
-            scissors beats paper
-            paper beats rock
-                if computer picks rock and player pick paper - player wins
-        a result message is displayed
-        */
+        function game(){
+            let playerWins = 0;
+            let computerWins = 0;
+            for(i = 0; i < 5; i++){
+                let outcome = playRound(getComputerChoice(), getPlayerChoice());
+                console.log(outcome);
+
+                if (outcome == "You win!") {
+                    playerWins++;
+                } else if (outcome == "You lose!") {
+                    computerWins++;
+                } else if (outcome == "Draw!"){
+                    playerWins++;
+                    computerWins++;
+                } else {
+                    return "An error occurred";
+                }
+            }
+
+            if (playerWins > computerWins){
+                return "You win the game!";
+            } else if (computerWins > playerWins) {
+                return "You lose the game!";
+            } else if (playerWins == computerWins) {
+                return "The game ends in a draw!";
+            } else {
+                return "An error occurred";
+            }
+
+        }
+
+        console.log(game());
+
     </script>
 </body>
 </html>
