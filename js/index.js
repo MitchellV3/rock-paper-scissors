@@ -12,29 +12,31 @@ function getComputerChoice() {
     }
 }
 
+/*
 function getPlayerChoice(){
     let playerChoice = prompt("Make a choice (Rock, Paper, Scissors)");
     return playerChoice.toUpperCase();
 }
+*/
 
 function playRound(computerChoice, playerChoice){
     console.log(computerChoice);
     console.log(playerChoice);
 
     if (computerChoice == playerChoice) {
-        return "Draw!";
+        gameResult("draw");
     } else if (computerChoice == "ROCK" && playerChoice == "SCISSORS"){
-        return "You lose!";
+        gameResult("lose");
     } else if (computerChoice == "SCISSORS" && playerChoice == "PAPER"){
-        return "You lose!";
+        gameResult("lose");
     } else if (computerChoice == "PAPER" && playerChoice == "ROCK"){
-        return "You lose!";
+        gameResult("lose");
     } else if (playerChoice == "ROCK" && computerChoice == "SCISSORS"){
-        return "You win!";
+        gameResult("win");
     } else if (playerChoice == "SCISSORS" && computerChoice == "PAPER"){
-        return "You win!";
+        gameResult("win");
     } else if (playerChoice == "PAPER" && computerChoice == "ROCK"){
-        return "You win!";
+        gameResult("win");
     } else {
         return "Invalid input";
     }
@@ -55,6 +57,30 @@ btnPaper.addEventListener("click", (e) => {
 btnScissors.addEventListener("click", (e) => {
     console.log(playRound(getComputerChoice(), "SCISSORS"));
 });
+
+const outputContainer = document.querySelector(".output-container");
+const output = document.createElement("div");
+output.classList.add("output");
+outputContainer.appendChild(output);
+
+const showResults = document.createElement("p");
+output.classList.add("show-results");
+output.appendChild(showResults);
+
+function gameResult(result){
+
+    if (result == "win"){
+        showResults.textContent = "You win!";
+    } else if (result == "lose") {
+        showResults.textContent = "You lose!";
+    } else if (result == "draw") {
+        showResults.textContent = "Draw!";
+    } else {
+        showResults.textContent ="An error occurred";
+    }
+
+    
+}
 
 /*
 function game(){

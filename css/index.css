@@ -23,3 +23,12 @@ body{
     font-size: 16px;
     background-color: rgb(16, 16, 16);
 }
+
+.show-results{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(235, 235, 235);
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
