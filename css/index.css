@@ -3,6 +3,7 @@ body{
     background-color: rgb(25, 25, 25);
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn-container{
@@ -17,11 +18,18 @@ body{
 .btn{
     color: rgb(235, 235, 235);
     border: none;
-    padding: 15px 32px;
+    padding: 22px 32px;
+    width: 175px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 25px;
     background-color: rgb(16, 16, 16);
+    border-radius: 10px;
+}
+
+.btn:hover{
+    color: rgb(0, 128, 122);
+    cursor: pointer;
 }
 
 .show-results{
@@ -30,5 +38,54 @@ body{
     justify-content: center;
     color: rgb(235, 235, 235);
     font-size: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 40px;
 }
+
+.vl {
+    border-left: 6px solid rgb(235, 235, 235);
+    height: 300px;
+    margin-top: 350px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+  }
+
+.score-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 215px;
+}
+
+.player-score, .computer-score  {
+    color: rgb(235, 235, 235);
+    font-size: 150px;
+    margin-top: 25px;
+  }
+
+
+  .display-choice, .display-user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: rgb(235, 235, 235);
+    gap: 150px;
+    font-size: 18px;
+  }
+
+  .player-user, .computer-user{
+    width: 150px;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(235, 235, 235);
+    text-decoration: underline;
+  }
+
+  .player-choice, .computer-choice {
+    width: 150px;
+
+    text-align: center;
+  }

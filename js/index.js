@@ -12,34 +12,116 @@ function getComputerChoice() {
     }
 }
 
-/*
-function getPlayerChoice(){
-    let playerChoice = prompt("Make a choice (Rock, Paper, Scissors)");
-    return playerChoice.toUpperCase();
-}
-*/
-
 function playRound(computerChoice, playerChoice){
     console.log(computerChoice);
     console.log(playerChoice);
 
+    playerScore.style.color = "rgb(235, 235, 235)"
+    computerScore.style.color = "rgb(235, 235, 235)"
+
     if (computerChoice == playerChoice) {
-        gameResult("draw");
+        game("draw");
     } else if (computerChoice == "ROCK" && playerChoice == "SCISSORS"){
-        gameResult("lose");
+        game("lose");
     } else if (computerChoice == "SCISSORS" && playerChoice == "PAPER"){
-        gameResult("lose");
+        game("lose");
     } else if (computerChoice == "PAPER" && playerChoice == "ROCK"){
-        gameResult("lose");
+        game("lose");
     } else if (playerChoice == "ROCK" && computerChoice == "SCISSORS"){
-        gameResult("win");
+        game("win");
     } else if (playerChoice == "SCISSORS" && computerChoice == "PAPER"){
-        gameResult("win");
+        game("win");
     } else if (playerChoice == "PAPER" && computerChoice == "ROCK"){
-        gameResult("win");
+        game("win");
     } else {
         return "Invalid input";
     }
+
+    displayPlayerUser.textContent = "Player";
+    displayUser.appendChild(displayPlayerUser);
+
+    displayComputerUser.textContent = "Computer";
+    displayUser.appendChild(displayComputerUser);
+
+    displayPlayerChoice.textContent = playerChoice;
+    displayChoice.appendChild(displayPlayerChoice);
+
+    displayComputerChoice.textContent = computerChoice;
+    displayChoice.appendChild(displayComputerChoice);
+}
+
+const outputContainer = document.querySelector(".output-container");
+const output = document.createElement("div");
+output.classList.add("output");
+outputContainer.appendChild(output);
+
+const showResults = document.createElement("p");
+showResults.classList.add("show-results");
+output.appendChild(showResults);
+
+const displayUser = document.createElement("div");
+displayUser.classList.add("display-user");
+output.appendChild(displayUser);
+
+const displayPlayerUser = document.createElement("p");
+displayPlayerUser.classList.add("player-user");
+const displayComputerUser = document.createElement("p");
+displayComputerUser.classList.add("computer-user");
+
+const displayChoice = document.createElement("div");
+displayChoice.classList.add("display-choice");
+output.appendChild(displayChoice);
+
+const displayPlayerChoice = document.createElement("p");
+displayPlayerChoice.classList.add("player-choice");
+const displayComputerChoice = document.createElement("p");
+displayComputerChoice.classList.add("computer-choice");
+
+const vl = document.createElement("div");
+vl.classList.add("vl");
+
+const scoreContainer = document.createElement("div");
+scoreContainer.classList.add("score-container");
+output.appendChild(scoreContainer);
+
+const playerScore = document.createElement("p");
+playerScore.classList.add("player-score");
+const computerScore = document.createElement("p");
+computerScore.classList.add("computer-score");
+
+let playerWins = 0;
+let computerWins = 0;
+
+function game(score){
+    
+    if (score == "win") {
+        playerWins++;
+        playerScore.style.color = "rgb(0, 128, 122)"
+    } else if (score == "lose") {
+        computerWins++;
+        computerScore.style.color = "rgb(0, 128, 122)"
+    } else if (score == "draw"){
+        playerWins++;
+        computerWins++;
+    } else {
+        return "An error occurred";
+    }
+
+    if (playerWins == 5 || computerWins == 5) {
+        gameResult(playerWins, computerWins);   
+        playerWins = 0;
+        computerWins = 0;
+
+    } else if (playerWins == 1 || computerWins == 1) {
+        showResults.textContent = "";
+    }
+
+    playerScore.textContent = playerWins;
+        scoreContainer.appendChild(playerScore);
+    computerScore.textContent = computerWins;
+        scoreContainer.appendChild(computerScore);
+        showResults.appendChild(vl);
+
 }
 
 let btnRock = document.querySelector(".rock");
@@ -58,16 +140,24 @@ btnScissors.addEventListener("click", (e) => {
     console.log(playRound(getComputerChoice(), "SCISSORS"));
 });
 
-const outputContainer = document.querySelector(".output-container");
-const output = document.createElement("div");
-output.classList.add("output");
-outputContainer.appendChild(output);
+function gameResult(playerWins, computerWins){
 
-const showResults = document.createElement("p");
-output.classList.add("show-results");
-output.appendChild(showResults);
+    showResults.style.color = "rgb(235, 235, 235)"
 
-function gameResult(result){
+    if (playerWins > computerWins){
+        showResults.textContent = "You win the game!";
+        showResults.style.color = "rgb(0, 128, 122)"
+    } else if (computerWins > playerWins) {
+        showResults.textContent = "You lose the game!";
+        showResults.style.color = "rgb(177, 77, 77)"
+    } else if (playerWins == computerWins) {
+        showResults.textContent = "The game ends in a draw!";
+    } else {
+        showResults.textContent = "An error occurred";
+    }
+}
+
+/*function gameResult(result){
 
     if (result == "win"){
         showResults.textContent = "You win!";
@@ -79,9 +169,7 @@ function gameResult(result){
         showResults.textContent ="An error occurred";
     }
 
-    
-}
-
+}*/
 /*
 function game(){
     let playerWins = 0;
@@ -91,29 +179,28 @@ function game(){
         console.log(`Round ${i}:`);
         console.log(outcome);
 
-        if (outcome == "You win!") {
+        if (outcome == "win") {
             playerWins++;
-        } else if (outcome == "You lose!") {
+        } else if (outcome == "lose!") {
             computerWins++;
-        } else if (outcome == "Draw!"){
+        } else if (outcome == "draw!"){
             playerWins++;
             computerWins++;
         } else {
             return "An error occurred";
         }
     }
-
-    if (playerWins > computerWins){
-        return "You win the game!";
-    } else if (computerWins > playerWins) {
-        return "You lose the game!";
-    } else if (playerWins == computerWins) {
-        return "The game ends in a draw!";
-    } else {
-        return "An error occurred";
-    }
-
 }
+*/
+/*
 
+*/
+/*
+function getPlayerChoice(){
+    let playerChoice = prompt("Make a choice (Rock, Paper, Scissors)");
+    return playerChoice.toUpperCase();
+}
+*/
+/*
 console.log(game());
 */
